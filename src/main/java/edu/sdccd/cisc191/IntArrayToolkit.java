@@ -8,7 +8,7 @@ import java.util.Arrays;
  *
  * IMPORTANT:
  * - Do not print inside these methods.
- * - Do not modify input arrays unless the method explicitly says so.
+ * - Do not modify input array/s unless the method explicitly says so.
  */
 public class IntArrayToolkit {
 
@@ -17,8 +17,14 @@ public class IntArrayToolkit {
      * @throws IllegalArgumentException if a is null
      */
     public static int sum(int[] a) {
-        // TODO: implement
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (a == null) {
+            throw new IllegalArgumentException();
+        }
+        int arrayTotal = 0;
+        for (int i = 0; i< a.length; i++ ){
+            arrayTotal += a[i];
+        }
+        return arrayTotal;
     }
 
     /**
@@ -26,8 +32,16 @@ public class IntArrayToolkit {
      * @throws IllegalArgumentException if a is null or empty
      */
     public static int max(int[] a) {
-        // TODO: implement
-        throw new UnsupportedOperationException("Not implemented yet");
+       if (a == null) {
+            throw new IllegalArgumentException();
+        }
+        int max = a[0];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] > max) {
+                max = a[i];
+            }
+        }
+        return max;
     }
 
     /**
@@ -35,8 +49,15 @@ public class IntArrayToolkit {
      * @throws IllegalArgumentException if a is null
      */
     public static int indexOf(int[] a, int target) {
-        // TODO: implement
-        throw new UnsupportedOperationException("Not implemented yet");
+          if (a == null) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == target) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -45,7 +66,13 @@ public class IntArrayToolkit {
      * @throws IllegalArgumentException if a is null
      */
     public static int[] copySortedAscending(int[] a) {
-        // TODO: implement (hint: defensive copy + Arrays.sort)
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (a == null) {
+            throw new IllegalArgumentException();
+        }
+
+        int[] arraySorted = Arrays.copyOf(a, a.length);
+
+        Arrays.sort(arraySorted);
+        return arraySorted;
     }
 }

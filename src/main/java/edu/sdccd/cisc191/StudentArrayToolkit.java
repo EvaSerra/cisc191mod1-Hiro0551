@@ -21,17 +21,29 @@ public class StudentArrayToolkit {
      * Must not modify the original array.
      */
     public static Student[] copySortedByGpaDesc(Student[] students) {
-        // TODO: defensive copy + Arrays.sort with Comparator lambda
-        throw new UnsupportedOperationException("Not implemented yet");
+        Student[] newStudents = Arrays.copyOf(students, students.length);
+        Comparator<Student> comparator = Comparator
+            // descending
+            .comparingDouble(Student::getGpa).reversed() 
+            // ascending
+            .thenComparing(Student::getName); 
+
+        Arrays.sort(newStudents, comparator);
+        return newStudents;
     }
+
 
     /**
      * Linear search for a student by id.
      * Returns the Student if found, otherwise null.
      */
     public static Student findByIdLinear(Student[] students, int id) {
-        // TODO: implement
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
     }
 
     /**
@@ -41,7 +53,30 @@ public class StudentArrayToolkit {
      * @throws IllegalArgumentException if n < 0
      */
     public static Student[] topNByGpa(Student[] students, int n) {
-        // TODO: validate n, sort copy, return first n in a new array
-        throw new UnsupportedOperationException("Not implemented yet");
+        // validate n, sort copy, return first n in a new array
+        if (n < 0) {
+            throw new IllegalArgumentException();
+        }
+        
+        Student[] arrayCopy = Arrays.copyOf(students, students.length);
+        
+        Arrays.sort(arrayCopy,
+            Comparator.comparing(Student::getGpa).reversed()
+                .thenComparing(Student::getName)
+        );
+
+        if (n > students.length) {
+            return arrayCopy;
+        }
+
+        if (n == 0) {
+            return new Student[0];
+        }
+
+        Student[] nArray = new Student[n];
+        for (int i = 0; i < nArray.length; i++) {
+            nArray[i] = arrayCopy[i];
+        }
+        return nArray;
     }
 }
