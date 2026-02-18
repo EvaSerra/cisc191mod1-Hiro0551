@@ -23,9 +23,7 @@ public class StudentArrayToolkit {
     public static Student[] copySortedByGpaDesc(Student[] students) {
         Student[] newStudents = Arrays.copyOf(students, students.length);
         Comparator<Student> comparator = Comparator
-            // descending
             .comparingDouble(Student::getGpa).reversed() 
-            // ascending
             .thenComparing(Student::getName); 
 
         Arrays.sort(newStudents, comparator);
@@ -64,19 +62,16 @@ public class StudentArrayToolkit {
             Comparator.comparing(Student::getGpa).reversed()
                 .thenComparing(Student::getName)
         );
-
         if (n > students.length) {
             return arrayCopy;
         }
-
         if (n == 0) {
             return new Student[0];
         }
-
-        Student[] nArray = new Student[n];
-        for (int i = 0; i < nArray.length; i++) {
-            nArray[i] = arrayCopy[i];
+        Student[] topNArray = new Student[n];
+        for (int i = 0; i < topNArray.length; i++) {
+            topNArray[i] = arrayCopy[i];
         }
-        return nArray;
+        return topNArray;
     }
 }
