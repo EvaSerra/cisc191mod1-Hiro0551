@@ -9,6 +9,15 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         // - Create at least 6 students and demonstrate:
+        /**
+         * You can write
+         * Student[] students = new Student[]{
+         *                 new Student("Nishka", 4.0, 10),
+         *                 new Student("Jose",   2.7, 47),
+         *                 new Student("Tony",   3.3, 15),
+         *                 ... }
+         *  instead and avoid having to number each one.
+         */
         Student[]students = new Student[6];
         students[0] = new Student("Jessie",2.5,101);
         students[1] = new Student("Shrek",1.4,102);

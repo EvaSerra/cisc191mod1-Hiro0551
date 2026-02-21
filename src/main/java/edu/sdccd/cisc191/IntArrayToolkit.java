@@ -21,6 +21,13 @@ public class IntArrayToolkit {
             throw new IllegalArgumentException();
         }
         int arrayTotal = 0;
+        /** To iterate though arrays you can use:
+         * for( int i : a) {
+         *     ...
+         * }
+         * That way you don't have to write the whole for loop everytime
+         * or do a[i] to access each item.
+         */
         for (int i = 0; i< a.length; i++ ){
             arrayTotal += a[i];
         }

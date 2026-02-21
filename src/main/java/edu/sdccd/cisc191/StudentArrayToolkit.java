@@ -57,11 +57,17 @@ public class StudentArrayToolkit {
         }
         
         Student[] arrayCopy = Arrays.copyOf(students, students.length);
-        
+
+        /** Instead of rewriting new code that does something that you already did before,
+         * you can reuse your old methods to get the same result.
+         * So you can just call copySortedByGpaDesc on arrayCopy
+         */
+
         Arrays.sort(arrayCopy,
             Comparator.comparing(Student::getGpa).reversed()
                 .thenComparing(Student::getName)
         );
+        //You can make else if statements here
         if (n > students.length) {
             return arrayCopy;
         }
